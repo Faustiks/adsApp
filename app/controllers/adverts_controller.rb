@@ -63,7 +63,8 @@ class AdvertsController < ApplicationController
         :title,
         :image,
         :description,
-        :text
+        :text,
+        :category_id
     )
   end
 end
