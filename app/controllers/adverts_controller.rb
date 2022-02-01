@@ -1,5 +1,5 @@
 class AdvertsController < ApplicationController
-
+  before_action :authenticate_user!
   # show all Adverts
   def index
     render json: Advert.all
@@ -21,7 +21,7 @@ class AdvertsController < ApplicationController
 
   # create Advert
   def create
-    user = User.find(5)
+    user = current_user
     advert = user.adverts.new(advert_params)
     if advert.save
       render json: advert, status: :created

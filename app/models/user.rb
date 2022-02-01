@@ -1,5 +1,14 @@
 class User < ApplicationRecord
-  has_many :comments, through: :adverts
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  # devise :database_authenticatable, :registerable,
+  #        :recoverable, :rememberable, :validatable
+  devise :database_authenticatable,
+         :jwt_authenticatable,
+         :registerable,
+         jwt_revocation_strategy: JwtDenylist
+  has_many :comments
+  # has_many :comments, through: :adverts
   has_many :adverts
   has_one :role
   validates :login, presence: true, length: { minimum: 4 }
