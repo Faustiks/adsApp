@@ -4,7 +4,7 @@ class Advert < ApplicationRecord
   has_many :comments
   validates :category_id, presence: true
   validates :title, presence: true, length: { minimum: 4 }
-  validate :text, presence: true
+  validates :text, presence: true
   # attr_accessor :title, :image, :description, :text, :created_at, :updated_at
   # def as_json(options = {}){
   #     username: user_id,

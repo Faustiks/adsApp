@@ -29,8 +29,12 @@ class CommentsController < ApplicationController
     # # json_to_send[:user] = user
     # render json: json_to_send
 
-    # comment = User.find(5).
-    comment = Comment.new(comment_params)
+    user = User.find(5)
+    advert = Advert.find(32)
+    p "----------------1"
+    # p advert.comments.new(comment_params).user(5)
+    p "----------------2"
+    comment = advert.comments.new(comment_params)
     if comment.save
       render json: comment, status: :created
     else
