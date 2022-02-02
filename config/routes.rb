@@ -9,9 +9,11 @@ Rails.application.routes.draw do
                  sessions: 'users/sessions',
                  registrations: 'users/registrations'
              }
-  get '/member-data', to: 'members#show'
+  get '/users/all', to: 'users#index'
+  get '/users/:id(.:format)', to: 'users#show'
   resources :adverts do
     resources :comments
   end
   resources :categories
+  # resources :users
 end

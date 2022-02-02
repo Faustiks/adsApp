@@ -1,5 +1,6 @@
 class AdvertsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!,
+                only: [:destroy, :update, :create]
   # show all Adverts
   def index
     render json: Advert.all

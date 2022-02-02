@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!,
+                only: [:index, :show, :destroy, :update]
   # show all users
   def index
     render json: User.all
